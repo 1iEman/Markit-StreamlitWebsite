@@ -407,7 +407,7 @@ with tab1:
     left, center, right = st.columns(3)
 
     
-    st.markdown('<div class="mainContainer"><p><br />MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
+    st.markdown('<div class="mainContainer"><p><br />MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on how to enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
          
     
     
@@ -432,13 +432,13 @@ with tab1:
         st.write("###")
         st.markdown(''' <div class="mainContainer">
              <h1>Background?</h1>
-             <p>TMarkIt is trained on real anynomous students assignments, submissions, and marks, to get TA-like feedback and machine-like precision and speed</p>
+             <p>MarkIt is trained on real anynomous students assignments, submissions, and marks, to get TA-like feedback and machine-like precision and speed.</p>
          </div>''', unsafe_allow_html=True)
         st.write("###")
 
         st.markdown(''' <div class="mainContainer">
              <h1>Our goal?</h1>
-             <p>MarkIt aims to improve students performance by providing the personalized constructive feedback they deserve, and to assist instructors by displaying students performance analyses and help them adapt to students' needs<br></p>
+             <p>MarkIt aims to improve students performance by providing the personalized constructive feedback they deserve, and to assist instructors by displaying students performance analyses and help them adapt to students' needs.<br></p>
          </div>''', unsafe_allow_html=True)
         #st.write("###")
         impath = "3.png"
@@ -458,7 +458,7 @@ with tab2:
         '<div class="context"><h1>Try MarkIt</h1></div><br/><br/><br/>',
         unsafe_allow_html=True
     )
-    st.markdown('<div class="mainContainer"><p><br /><br />MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
+    st.markdown('<div class="mainContainer"><p><br /><br />MarkIt helps you improve your coding skills quickly! Upload your Python scripts, get them graded in seconds, and receive detailed, easy-to-understand feedback.</p></div><br/>', unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
 
@@ -520,6 +520,16 @@ with tab2:
 with tab3:
     st.markdown('<div class="area" >  <ul class="circles"> <li></li> <li></li> <li></li> <li></li><li></li> <li></li> <li></li> <li></li> <li></li> <li></li>  </ul></div >', unsafe_allow_html=True)   
     st.markdown(  '<div class="context"> <h1>FAQ</h1> </div><br/><br/><br/>' , unsafe_allow_html=True)  
-    st.markdown('<div class="mainContainer"><h1>Can I use?</h1><p>MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
-    st.markdown('<div class="mainContainer"><h1>Can I link MarkIt to Moodle?</h1><p>MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
-    st.markdown('<div class="mainContainer"><h1>How will I be </h1><p>MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
+    st.markdown('''
+<div class="mainContainer">
+    <h1>How do I start using MarkIt?</h1>
+    <p>
+        - Upload the question document (PDF).<br>
+        - Upload student Python files.<br>
+        - Click the "Enter to Grade" button to begin evaluation.<br>
+        - View detailed feedback in the form of HTML tables.
+    </p>
+</div><br/>
+''', unsafe_allow_html=True)
+    st.markdown('<div class="mainContainer"><h1>Can I link MarkIt to Moodle?</h1><p>Not currently, but in the future, we plan to integrate MarkIt with Moodle to provide seamless grading and feedback for instructors and students. Stay tuned!</p></div><br/>', unsafe_allow_html=True)
+    st.markdown('<div class="mainContainer"><h1>How does MarkIt evaluate code?</h1><p>MarkIt uses advanced AI models and a grading rubric based on the provided question. It evaluates code for logic, correctness, structure, and style, and then generates a detailed feedback report.</p></div><br/>', unsafe_allow_html=True)
