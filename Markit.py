@@ -54,13 +54,13 @@ pageBase = """
 .mainContainer h1 {
     color: #333; /* Dark grey color for the heading */
     font-size: 30px; /* Adjust font size */
-    margin-bottom: 5px; /* Space below the heading */
+    margin-bottom: 2px; /* Space below the heading */
 }
 
 /* Paragraph style */
 .mainContainer p {
     color: #555; /* Medium grey color for the text */
-    font-size: 17px; /* Adjust font size */
+    font-size: 16px; /* Adjust font size */
 }
 
 /* extra styling */
@@ -315,10 +315,9 @@ body{
 </style>
 
 
-
-    
-
 """
+
+
 # Access the OpenAI API key from Streamlit secrets
 openai_api_key = st.secrets["openai_api_key"]
 
@@ -344,19 +343,19 @@ def html_table_to_dataframe(html_table):
     df = pd.DataFrame(table_data, columns=headers)
     return df
 
-# Function to evaluate the student's code and generate an HTML table with feedback
+
 def grade_code(file_content, question_pdf_path):
-    # Load the question content into the embeddings
+    
     pdf_loader = PyPDFLoader(question_pdf_path)
     pdf_docs = pdf_loader.load()
 
-    # Initialize the OpenAI embeddings
+
     embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
 
-    # Create the vector store for the PDF documents
+    
     vector_store = FAISS.from_texts([doc.page_content for doc in pdf_docs], embeddings)
 
-    # Set up the retriever and QA chain
+    
     retriever = vector_store.as_retriever()
     fine_tuned_model_id = "ft:gpt-4o-mini-2024-07-18:personal::AS33rYst"
     llm = ChatOpenAI(model_name=fine_tuned_model_id, openai_api_key=openai_api_key)
@@ -406,9 +405,7 @@ with tab1:
 #                                   Containers
 ##############################################################################
     left, center, right = st.columns(3)
-    
-    #with center:
-    #    st.image(logopath, width=200)
+
     
     st.markdown('<div class="mainContainer"><p><br />MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
          
@@ -430,8 +427,6 @@ with tab1:
                 <p>The current version of MarkIt does not save any copies of your submissions or papers. Future versions could be integrated with elearning platforms to include comparisons and capture students' improvement through the assessments. Integration with elearning platforms will also allow MarkIt to understand about the course material and students backgrounds. </p>
             </div><br/>''', unsafe_allow_html=True)
 
-        
-
     
     with b: 
         st.write("###")
@@ -450,7 +445,6 @@ with tab1:
         file_ = open(impath, "rb")
         st.image(impath, use_column_width=True)
 
-       # st.markdown(''' <div class="extra"> <br><br><br> </div>''', unsafe_allow_html=True)
 
     st.markdown('<div class="area" >  <ul class="circles"> <li></li> <li></li> <li></li> <li></li><li></li> <li></li> <li></li> <li></li> <li></li> <li></li>  </ul></div >', unsafe_allow_html=True)   
     
@@ -483,13 +477,13 @@ with tab2:
         ''', unsafe_allow_html=True)
 
     with col2:
-        question_pdf = st.file_uploader("Upload PDF with Questions", type="pdf")
-        student_solutions = st.file_uploader("Upload Student Solutions (.py)", type="py", accept_multiple_files=True)
+        question_pdf = st.file_uploader("", type="pdf")
+        student_solutions = st.file_uploader("", type="py", accept_multiple_files=True)
 
     if question_pdf and student_solutions:
-        question_pdf_path = question_pdf.name  # Pass file name for PyPDFLoader
+        question_pdf_path = question_pdf.name  
 
-        # Save uploaded question PDF locally for PyPDFLoader
+        
         with open(question_pdf_path, "wb") as f:
             f.write(question_pdf.getbuffer())
 
@@ -510,28 +504,22 @@ with tab2:
                 file_content = student_file.read().decode("utf-8")
                 feedback_html = grade_code(file_content, question_pdf_path)
                 
-                # Convert HTML table to DataFrame
+                
                 feedback_df = html_table_to_dataframe(feedback_html)
                 
-                # Convert DataFrame to HTML table string
+                
                 feedback_html_table = feedback_df.to_html(index=False, escape=False)
 
-                # Display as a full HTML block with a <div class="mainContainer">
+                
                 st.markdown(
                     f'<div class="mainContainer"><h3>Feedback for {student_file.name}</h3>{feedback_html_table}</div>',
                     unsafe_allow_html=True
                 )
 
 
-
-    
 with tab3:
     st.markdown('<div class="area" >  <ul class="circles"> <li></li> <li></li> <li></li> <li></li><li></li> <li></li> <li></li> <li></li> <li></li> <li></li>  </ul></div >', unsafe_allow_html=True)   
     st.markdown(  '<div class="context"> <h1>FAQ</h1> </div><br/><br/><br/>' , unsafe_allow_html=True)  
     st.markdown('<div class="mainContainer"><h1>Can I use?</h1><p>MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
     st.markdown('<div class="mainContainer"><h1>Can I link MarkIt to Moodle?</h1><p>MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
     st.markdown('<div class="mainContainer"><h1>How will I be </h1><p>MarkIt is your intelligent teaching assisstant! Mark your codes in seconds and get detailed feedback on howto enhance your coding skills!</p></div><br/>', unsafe_allow_html=True)
-
-
-#image1 ="https://img.freepik.com/free-vector/dark-polygonal-background_79603-282.jpg"
-#st.image(image1, use_column_width='auto')
