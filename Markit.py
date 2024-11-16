@@ -319,9 +319,9 @@ body{
     
 
 """
-# Define OpenAI API key (insert your key directly or use an environment variable for security)
-openai_api_key = "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"
-# Function to extract text from the uploaded PDF
+# Access the OpenAI API key from Streamlit secrets
+openai_api_key = st.secrets["openai_api_key"]
+
 def extract_pdf_text(pdf_file):
     pdf_reader = PdfReader(pdf_file)
     text = ""
@@ -329,7 +329,7 @@ def extract_pdf_text(pdf_file):
         text += page.extract_text()
     return text
 
-# Function to parse HTML table to DataFrame
+
 def html_table_to_dataframe(html_table):
     soup = BeautifulSoup(html_table, "html.parser")
     table_data = []
