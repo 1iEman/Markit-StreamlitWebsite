@@ -2,7 +2,11 @@ streamlit
 pillow
 PyPDF2
 langchain
+langchain-community
 faiss-cpu
 langchain-openai
 beautifulsoup4
 pandas
+openai
+pymupdf
+lxml
