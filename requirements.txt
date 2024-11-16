@@ -1,0 +1,8 @@
+streamlit
+pillow
+PyPDF2
+langchain
+faiss-cpu
+langchain-openai
+beautifulsoup4
+pandas
