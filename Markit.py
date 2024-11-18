@@ -317,8 +317,7 @@ body{
 
 """
 
-
-# Access the OpenAI API key from Streamlit secrets
+# Access the OpenAI API key from Streamlit secrets 
 openai_api_key = st.secrets["openai_api_key"]
 
 def extract_pdf_text(pdf_file):
@@ -489,7 +488,7 @@ with tab2:
 
         st.markdown('''
             <div class="mainContainerGrade">
-                <p>Click below to start grading:</p>
+                <h5>Click below to start grading:</h>
             </div>
         ''', unsafe_allow_html=True)
 
@@ -512,7 +511,7 @@ with tab2:
 
                 
                 st.markdown(
-                    f'<div class="mainContainer"><h3>Feedback for {student_file.name}</h3>{feedback_html_table}</div>',
+                    f'<div class="container"><h3>Feedback for {student_file.name}</h3>{feedback_html_table}</div>',
                     unsafe_allow_html=True
                 )
 
@@ -527,7 +526,7 @@ with tab3:
         - Upload the question document (PDF).<br>
         - Upload student Python files.<br>
         - Click the "Enter to Grade" button to begin evaluation.<br>
-        - View detailed feedback in the form of HTML tables.
+        - View detailed feedback in the form of tables.
     </p>
 </div><br/>
 ''', unsafe_allow_html=True)
